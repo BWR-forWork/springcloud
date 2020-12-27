@@ -1,6 +1,7 @@
 package pers.bwr.learn.springcloud.eurekaclient.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import pers.bwr.learn.springcloud.eurekaclient.entity.Student;
 import pers.bwr.learn.springcloud.eurekaclient.repository.StudentRepository;
@@ -13,6 +14,9 @@ public class studentHandler {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Value("${server.port}")
+    private String port;
 
     @GetMapping("/findAll")
     public Collection<Student> findAll() {
@@ -38,4 +42,10 @@ public class studentHandler {
     public void deleteById(@PathVariable("id") long id) {
         studentRepository.deleteById(id);
     }
+
+    @GetMapping("/index")
+    public String index(){
+        return "当前端口：" + this.port;
+    }
+
 }
