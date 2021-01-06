@@ -1,0 +1,18 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/BWR-forWork/springcloud.git
+          searchpaths: config
+          username: BWR-forWork
+          password: e11fe5a29f9764bfc927f7c1151074cd0daf0e5e
+        label: master
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
